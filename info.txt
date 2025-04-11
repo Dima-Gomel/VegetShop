@@ -1,0 +1,30 @@
+pip install django djangorestframework  # Устанавливаем Django и DRF
+
+django-admin startproject config .  # Создаем проект (точка в конце!)
+
+python manage.py startapp api  # Создаем приложение "api"
+
+python manage.py makemigrations  # Создаем миграции
+
+python manage.py migrate  # Применяем миграции
+
+python manage.py runserver # Запускаем сервер
+
+pip freeze > requirements.txt # Создаем файл с зависимостями
+pip install -r requirements.txt
+
+pip install django-cors-headers # Устанавливаем CORS
+
+
+npx create-react-app name  # Создаем React
+
+npm start  # Запускаем React
+
+npm install axios # Устанавливаем axios
+
+
+git init  # Инициализируем репозиторий
+
+
+
+
