@@ -8,6 +8,8 @@ python manage.py makemigrations  # Создаем миграции
 
 python manage.py migrate  # Применяем миграции
 
+python .\manage.py createsuperuser  # Создаем суперпользователя
+
 python manage.py runserver # Запускаем сервер
 
 pip freeze > requirements.txt # Создаем файл с зависимостями
@@ -22,9 +24,7 @@ npm start  # Запускаем React
 
 npm install axios # Устанавливаем axios
 
+pip install drf-yasg # Устанавливаем drf-yasg
+
 
 git init  # Инициализируем репозиторий
-
-
-
-

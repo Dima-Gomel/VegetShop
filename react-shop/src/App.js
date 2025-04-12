@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import Header from './components/Header';
+import Footer from "./components/Footer";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -21,20 +26,26 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Tasks</h1>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <button onClick={addTask}>Add Task</button>
-      <ul>
-        {tasks.map(task => (
-          <li key={task.id}>{task.title} - {task.completed ? '✅' : '❌'}</li>
-        ))}
-      </ul>
-    </div>
+      <div>
+          <div>
+              <Header/>
+          </div>
+          <h2>Задача</h2>
+          <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+          />
+          <button className="btn btn-primary" onClick={addTask}>Добавить задачу</button>
+          <ul>
+              {tasks.map(task => (
+                  <li key={task.id}>{task.title} - {task.completed ? '✅' : '❌'}</li>
+              ))}
+          </ul>
+          <div>
+              <Footer/>
+          </div>
+      </div>
   );
 }
 

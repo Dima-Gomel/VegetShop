@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'veget_shop',
     'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

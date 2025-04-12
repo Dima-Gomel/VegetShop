@@ -1,0 +1,63 @@
+import React from 'react';
+import '../index.css';
+import logo from '../assets/images/logo.png';
+import {FaFacebook, FaInstagram, FaTelegram, FaVk} from 'react-icons/fa';
+
+const Footer = () => {
+    return (
+        <footer className="footer">
+            <div className="footer-container">
+                {/* Лого и описание */}
+                <div className="footer-section">
+                    <img
+                        src={logo}
+                        alt="Логотип"
+                        className="footer-logo"
+                    />
+                    <p className="footer-description">
+                        Магазин свежих овощей и фруктов с доставкой по городу
+                    </p>
+                </div>
+
+                {/* Меню */}
+                <div className="footer-section">
+                    <h3 className="footer-title">Меню</h3>
+                    <ul className="footer-links">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/about">О нас</a></li>
+                        <li><a href="/contacts">Контакты</a></li>
+                    </ul>
+                </div>
+
+                {/* Контакты */}
+                <div className="footer-section">
+                    <h3 className="footer-title">Контакты</h3>
+                    <ul className="footer-contacts">
+                        <li>+375 (29) 832-25-55</li>
+                        <li>fruit@yandex.ru</li>
+                        <li>Гомель, Каменщикова, 3</li>
+                    </ul>
+                </div>
+
+                {/* Соцсети */}
+                <div className="footer-section">
+                    <h3 className="footer-title">Мы в соцсетях</h3>
+                    <div className="social-icons">
+                        <a href="#"><FaFacebook/></a>
+                        <a href="#"><FaInstagram/></a>
+                        <a href="#"><FaTelegram/></a>
+                        <a href="#"><FaVk/></a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Копирайт */}
+            <div className="footer-bottom">
+                <p>© {new Date().getFullYear()} Все права защищены.</p>
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;
