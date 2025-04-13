@@ -27,10 +27,22 @@ const Header = () => {
                 <span>🛒</span>
                 <span>0</span>
             </div>
-            <button onClick={() => setShowAuthModal(true)} className="btn btn-success">
+            <button onClick={() => {
+                console.log('модалка');
+                setShowAuthModal(true);
+            }}
+                    className="btn btn-success"
+            >
                 Войти
             </button>
-            {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)}/>}
+            {showAuthModal && (
+                <AuthModal
+                    onClose={() => {
+                        console.log('Closing modal');
+                        setShowAuthModal(false);
+                    }}
+                />
+            )}
         </header>
     );
 };
