@@ -24,7 +24,7 @@ const Footer = () => {
                     <h3 className="footer-title">Меню</h3>
                     <ul className="footer-links">
                         <li><a href="/">Главная</a></li>
-                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/products">Каталог товаров</a></li>
                         <li><a href="/about">О нас</a></li>
                         <li><a href="/contacts">Контакты</a></li>
                     </ul>

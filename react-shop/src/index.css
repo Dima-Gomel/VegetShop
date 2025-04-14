@@ -28,8 +28,19 @@ code {
 }
 
 .logo {
-    height: 50px;
-    width: auto;
+  height: 50px; /* Настройте под ваш логотип */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+
+.logo-link {
+  display: inline-block; /* Чтобы ссылка правильно оборачивала лого */
+  text-decoration: none;
 }
 
 .navigation {
@@ -188,6 +199,22 @@ code {
   font: inherit !important;
 }
 
+/*стили для карточек */
+
+.product-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.product-card .card-img-top {
+  border-radius: 8px 8px 0 0 !important;
+}
 /*futter*/
 
 .footer {

@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from veget_shop.models import Task
+from veget_shop.models import Product
 
-class TaskSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Task
-        fields = ['id', 'title', 'completed']
+        model = Product
+        fields = '__all__'
+        read_only_fields = ('id',)

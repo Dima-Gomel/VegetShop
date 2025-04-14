@@ -2,22 +2,24 @@ import React from "react";
 import logo from '../assets/images/logo.png';
 import {useState} from "react";
 import AuthModal from "./AuthModal";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     const [showAuthModal, setShowAuthModal] = useState(false);
     return (
         <header className="header">
             <div className="logo-container">
-                <img
-                    src={logo}
-                    alt="Логотип"
-                    className="logo"
-                />
+                <Link to="/" className="logo-link">
+                    <img
+                        src={logo}
+                        alt="Логотип компании"
+                        className="logo"
+                    />
+                </Link>
                 <h1>Овощи, фрукты и зелень к вашему столу</h1>
             </div>
 
             <nav className="navigation">
-                {/*<a href="/">Главная</a>*/}
                 <a href="/products">Каталог товаров</a>
                 <a href="/about">О нас</a>
                 <a href="/contacts">Контакты</a>

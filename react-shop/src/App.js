@@ -1,52 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Header from './components/Header';
 import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
+import ProductsPage from './components/ProductsPage';
+import ProductDetails from './components/ProductDetails';
+import AboutPage from "./components/AboutPage";
+import HomePage from "./components/HomePage";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [title, setTitle] = useState('');
+    return (
+        <Router>
+            <div className="app-container">
+                <Header/>
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+                <main className="container mt-4">
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/products" element={<ProductsPage />} />
+                        <Route path="/products/:id" element={<ProductDetails />} />
+                        <Route path="/about" element={<AboutPage />} />
+                    </Routes>
+                </main>
 
-  const fetchTasks = async () => {
-    const response = await axios.get('/api/tasks/');
-    setTasks(response.data);
-  };
-
-  const addTask = async () => {
-    await axios.post('/api/tasks/', { title, completed: false });
-    fetchTasks();
-    setTitle('');
-  };
-
-  return (
-      <div>
-          <div>
-              <Header/>
-          </div>
-          <h2>Задача</h2>
-          <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-          />
-          <button className="btn btn-primary" onClick={addTask}>Добавить задачу</button>
-          <ul>
-              {tasks.map(task => (
-                  <li key={task.id}>{task.title} - {task.completed ? '✅' : '❌'}</li>
-              ))}
-          </ul>
-          <div>
-              <Footer/>
-          </div>
-      </div>
-  );
+                <Footer/>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
