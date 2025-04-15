@@ -12,7 +12,6 @@ const ProductsPage = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/products/');
-        console.log(response.data); // Проверка данных
         setProducts(response.data);
       } catch (err) {
         setError(err.message);

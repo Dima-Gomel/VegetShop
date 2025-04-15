@@ -22,7 +22,7 @@ const Header = () => {
             <nav className="navigation">
                 <a href="/products">Каталог товаров</a>
                 <a href="/about">О нас</a>
-                <a href="/contacts">Контакты</a>
+                <Link to="/contacts" className="nav-link">Контакты</Link>
             </nav>
 
             <div className="cart">
@@ -30,7 +30,6 @@ const Header = () => {
                 <span>0</span>
             </div>
             <button onClick={() => {
-                console.log('модалка');
                 setShowAuthModal(true);
             }}
                     className="btn btn-success"
@@ -40,7 +39,6 @@ const Header = () => {
             {showAuthModal && (
                 <AuthModal
                     onClose={() => {
-                        console.log('Closing modal');
                         setShowAuthModal(false);
                     }}
                 />

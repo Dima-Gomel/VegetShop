@@ -17,7 +17,7 @@ const ProductDetails = () => {
         <>
           <h1>{product.name}</h1>
           <img
-            src={`http://localhost:8000${product.image}`}
+            src={product.image}
             alt={product.name}
             width="300"
           />
