@@ -5,6 +5,7 @@ import './AboutPage.css';
 import vegetables from "../assets/images/Овощи.jpg";
 import fruits from "../assets/images/Фрукты.jpg";
 import greens from "../assets/images/Зелень.jpg";
+import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
     return (
@@ -81,7 +82,7 @@ const AboutPage = () => {
                 <div className="cta-content">
                     <h2>Сезонное предложение!</h2>
                     <p>Свежая клубника и черешня прямо с грядки — скидка 15% на первый заказ</p>
-                    <button className="cta-button">Заказать сейчас</button>
+                    <Link to="/products" className="cta-button">За покупками</Link>
                 </div>
             </section>
         </div>
