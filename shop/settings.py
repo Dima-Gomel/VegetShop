@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_yasg',
     'accounts',
+    'rest_framework_simplejwt.token_blacklist',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +130,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Разрешаем запросы от React
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
 ]
 CORS_ALLOW_CREDENTIALS = True
 
@@ -135,7 +141,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
 }
 
 # JWT настройки
@@ -146,4 +155,8 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+ADMIN_URL = 'admin/'
+AUTH_USER_MODEL = 'auth.User'

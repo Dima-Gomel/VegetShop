@@ -3,3 +3,4 @@
 /veget_shop/migrations
 .idea
 /node_modules/
+.env
