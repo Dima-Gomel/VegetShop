@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 
-
 def register(request):
     try:
         user = User.objects.create_user(
@@ -10,9 +9,9 @@ def register(request):
             email=request.data.get('email'),
             password=request.data.get('password')
         )
-        # Убедитесь, что user не None!
+
         if user is not None:
-            return Response({"id": user.id})  # Теперь user.id безопасен
+            return Response({"id": user.id})
         else:
             return Response({"error": "User not created"}, status=400)
     except Exception as e:
@@ -20,7 +19,6 @@ def register(request):
 
 
 class Product(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     category = models.CharField(max_length=100, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)

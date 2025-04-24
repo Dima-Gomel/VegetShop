@@ -66,7 +66,8 @@ const login = async (authData) => {
         localStorage.setItem('refresh_token', authData.tokens.refresh);
 
         // Обновляем состояние
-        setUser(authData.user);
+        const { data } = await api.get('/api/profile/');
+        setUser(data);
 
         return {success: true};
     } catch (error) {
@@ -90,6 +91,10 @@ const logout = async () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         setUser(null);
+
+         // Сбрасываем axios-интерцепторы (опционально)
+        api.interceptors.request.clear();
+        api.interceptors.response.clear();
     }
 };
 

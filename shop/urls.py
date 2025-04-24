@@ -14,9 +14,12 @@ from accounts.views import (
     LogoutView,
     VerifyAuthView
 )
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
+from rest_framework_simplejwt.views import TokenRefreshView
+from veget_shop.views import (
+    AdminOrderViewSet,
+    AdminProductViewSet,
+    AdminUserViewSet
+
 )
 
 schema_view = get_schema_view(
@@ -30,9 +33,9 @@ schema_view = get_schema_view(
 )
 
 router = DefaultRouter()
-# router.register(r'admin/orders', AdminOrderViewSet, basename='admin-orders')
-# router.register(r'admin/products', AdminProductViewSet, basename='admin-products')
-# router.register(r'admin/users', AdminUserViewSet, basename='admin-users')
+router.register(r'admin/orders', AdminOrderViewSet, basename='admin-orders')
+router.register(r'admin/products', AdminProductViewSet, basename='admin-products')
+router.register(r'admin/users', AdminUserViewSet, basename='admin-users')
 
 urlpatterns = [
                   path('admin/', admin.site.urls),

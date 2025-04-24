@@ -7,11 +7,42 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import IsAdminUser
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.pagination import PageNumberPagination
+from django.core.paginator import Paginator
+
+
+class StandardPagination(PageNumberPagination):
+    page_size = 8
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+    def paginate_queryset(self, queryset, request, view=None):
+        """
+        Переопределяем метод для правильной работы с Django Paginator
+        """
+        page_size = self.get_page_size(request)
+        if not page_size:
+            return None
+
+        paginator = Paginator(queryset, page_size)
+        page_number = request.query_params.get(self.page_query_param, 1)
+
+        try:
+            self.page = paginator.page(page_number)
+        except:
+            self.page = paginator.page(1)
+
+        if paginator.num_pages > 1 and self.template is not None:
+            self.display_page_controls = True
+
+        self.request = request
+        return list(self.page)
 
 
 class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    pagination_class = StandardPagination  # Добавляем пагинацию
 
 
 class ProductDetailAPIView(generics.RetrieveAPIView):
@@ -54,9 +85,12 @@ class AdminProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser]
+    pagination_class = StandardPagination  # И для админки тоже
 
 
 class AdminUserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAdminUser]
+
+

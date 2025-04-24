@@ -1,32 +1,57 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import logo from '../assets/images/logo.png';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
 import CartIcon from "./CartIcon";
-import {useAuth} from "../context/AuthContext";
-import {useCart} from "./CartContext";
-import {useNavigate} from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
+import { useCart } from "./CartContext";
+import { useNavigate } from 'react-router-dom';
+import './Header.css';
+
 
 const Header = () => {
     const [showAuthModal, setShowAuthModal] = useState(false);
-    const {user, loading, login, logout} = useAuth();
-    const {cartItems} = useCart();
+    const { user, loading, login, logout } = useAuth();
+    const { cartItems } = useCart();
     const navigate = useNavigate();
+    const [isProcessing, setIsProcessing] = useState(false);
+
     const handleLoginSuccess = async (authData) => {
+        setIsProcessing(true);
         try {
-            // authData содержит { tokens, user, username }
             const result = await login(authData);
             if (result.success) {
                 setShowAuthModal(false);
-                navigate('/'); // Перенаправляем на главную
+                navigate('/', { state: { fromAuth: true } }); // Перенаправляем с флагом
             }
         } catch (error) {
             console.error('Login error:', error);
+        } finally {
+            setIsProcessing(false);
         }
     };
 
-    if (loading) {
-        return <div className="loading-overlay">Loading...</div>;
+    const handleLogout = async () => {
+        setIsProcessing(true);
+        try {
+            await logout();
+            navigate('/', { state: { fromLogout: true } }); // Перенаправляем с флагом
+        } catch (error) {
+            console.error('Logout error:', error);
+        } finally {
+            setIsProcessing(false);
+        }
+    };
+
+    // Закрываем модалку если пользователь авторизовался
+    useEffect(() => {
+        if (user && showAuthModal) {
+            setShowAuthModal(false);
+        }
+    }, [user, showAuthModal]);
+
+    if (loading && !user) {
+        return <div className="loading-overlay">Загрузка...</div>;
     }
 
     return (
@@ -45,27 +70,33 @@ const Header = () => {
             </nav>
 
             <div className="user-controls">
-                <CartIcon count={cartItems.length}/>
+                <CartIcon count={cartItems.reduce((sum, item) => sum + item.quantity, 0)} />
+
                 {user ? (
                     <div className="user-menu">
-                        <span className="user-greeting">Привет, {user.username}</span>
+                        <div className="user-info">
+                            <span className="user-greeting">Привет, {user.username}</span>
+                            {user.is_staff && (
+                                <Link to="/admin" className="admin-link">
+                                    Админ-панель
+                                </Link>
+                            )}
+                        </div>
                         <button
-                            onClick={() => {
-                                logout();
-                                // Можно добавить перенаправление на главную
-                            }}
+                            onClick={handleLogout}
                             className="btn btn-outline-danger"
+                            disabled={isProcessing}
                         >
-                            Выйти
+                            {isProcessing ? 'Выход...' : 'Выйти'}
                         </button>
                     </div>
                 ) : (
                     <button
                         onClick={() => setShowAuthModal(true)}
                         className="btn btn-success"
-                        disabled={loading}
+                        disabled={loading || isProcessing}
                     >
-                        Войти
+                        {isProcessing ? 'Загрузка...' : 'Войти'}
                     </button>
                 )}
             </div>
