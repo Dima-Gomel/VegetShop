@@ -12,7 +12,7 @@ import './Header.css';
 const Header = () => {
     const [showAuthModal, setShowAuthModal] = useState(false);
     const { user, loading, login, logout } = useAuth();
-    const { cartItems } = useCart();
+    const { cartItems, clearCart } = useCart();
     const navigate = useNavigate();
     const [isProcessing, setIsProcessing] = useState(false);
 
@@ -35,6 +35,7 @@ const Header = () => {
         setIsProcessing(true);
         try {
             await logout();
+            clearCart();
             navigate('/', { state: { fromLogout: true } });
         } catch (error) {
             console.error('Logout error:', error);

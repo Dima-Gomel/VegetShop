@@ -28,3 +28,5 @@ pip install drf-yasg # Устанавливаем drf-yasg
 
 
 git init  # Инициализируем репозиторий
+
+pip install python-decouple # Устанавливаем python-decouple

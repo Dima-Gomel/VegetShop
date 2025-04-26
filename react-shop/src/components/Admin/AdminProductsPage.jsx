@@ -107,16 +107,17 @@ const AdminProductsPage = () => {
                         <td>{product.price} ₽</td>
                         <td>{product.category}</td>
                         <td>
-                            {/*<Button*/}
-                            {/*    variant="outline-primary"*/}
-                            {/*    size="sm"*/}
-                            {/*    onClick={() => {*/}
-                            {/*        setEditingProduct(product);*/}
-                            {/*        setShowModal(true);*/}
-                            {/*    }}*/}
-                            {/*>*/}
-                            {/*    Редактировать*/}
-                            {/*</Button>*/}
+                            <Button
+                                variant="outline-primary"
+                                size="sm"
+                                onClick={() => {
+                                    console.log("Editing product:", product);
+                                    setEditingProduct(product);
+                                    setShowModal(true);
+                                }}
+                            >
+                                Редактировать
+                            </Button>
                             <Button
                                 variant="outline-danger"
                                 size="sm"
