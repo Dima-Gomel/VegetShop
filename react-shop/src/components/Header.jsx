@@ -22,7 +22,7 @@ const Header = () => {
             const result = await login(authData);
             if (result.success) {
                 setShowAuthModal(false);
-                navigate('/', { state: { fromAuth: true } }); // Перенаправляем с флагом
+                navigate('/', { state: { fromAuth: true } });
             }
         } catch (error) {
             console.error('Login error:', error);
@@ -35,7 +35,7 @@ const Header = () => {
         setIsProcessing(true);
         try {
             await logout();
-            navigate('/', { state: { fromLogout: true } }); // Перенаправляем с флагом
+            navigate('/', { state: { fromLogout: true } });
         } catch (error) {
             console.error('Logout error:', error);
         } finally {
@@ -43,7 +43,6 @@ const Header = () => {
         }
     };
 
-    // Закрываем модалку если пользователь авторизовался
     useEffect(() => {
         if (user && showAuthModal) {
             setShowAuthModal(false);

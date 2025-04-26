@@ -17,9 +17,6 @@ class StandardPagination(PageNumberPagination):
     max_page_size = 100
 
     def paginate_queryset(self, queryset, request, view=None):
-        """
-        Переопределяем метод для правильной работы с Django Paginator
-        """
         page_size = self.get_page_size(request)
         if not page_size:
             return None
@@ -42,7 +39,7 @@ class StandardPagination(PageNumberPagination):
 class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    pagination_class = StandardPagination  # Добавляем пагинацию
+    pagination_class = StandardPagination
 
 
 class ProductDetailAPIView(generics.RetrieveAPIView):
@@ -74,6 +71,14 @@ class OrderCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+class OrderViewSet(ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class AdminOrderViewSet(ModelViewSet):
     queryset = Order.objects.all().order_by('-created_at')
@@ -85,7 +90,7 @@ class AdminProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser]
-    pagination_class = StandardPagination  # И для админки тоже
+    pagination_class = StandardPagination
 
 
 class AdminUserViewSet(ModelViewSet):

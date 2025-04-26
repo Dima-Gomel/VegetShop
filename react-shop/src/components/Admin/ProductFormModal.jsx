@@ -12,12 +12,10 @@ const ProductFormModal = ({ show, onHide, product, onSuccess }) => {
     image: null
   });
 
-  // Превью изображения
   const [preview, setPreview] = useState(product?.image || null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Обработчик изменения полей формы
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -25,13 +23,12 @@ const ProductFormModal = ({ show, onHide, product, onSuccess }) => {
     });
   };
 
-  // Обработчик загрузки изображения
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFormData({...formData, image: file});
 
-      // Создаем превью для отображения
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
@@ -40,7 +37,7 @@ const ProductFormModal = ({ show, onHide, product, onSuccess }) => {
     }
   };
 
-  // Обработчик отправки формы
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -57,25 +54,23 @@ const ProductFormModal = ({ show, onHide, product, onSuccess }) => {
       }
 
       if (product) {
-        // Редактирование существующего товара
         await axios.put(`/api/admin/products/${product.id}/`, formDataToSend, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Content-Type': 'multipart/form-data'
           }
         });
       } else {
-        // Создание нового товара
         await axios.post('/api/admin/products/', formDataToSend, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             'Content-Type': 'multipart/form-data'
           }
         });
       }
 
-      onSuccess(); // Обновляем список товаров
-      onHide();    // Закрываем модальное окно
+      onSuccess();
+      onHide();
     } catch (err) {
       setError(err.response?.data?.message || 'Произошла ошибка при сохранении');
     } finally {

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useCart } from './CartContext';
 import { useAuth } from '../context/AuthContext';
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
   const { cartItems, totalPrice, clearCart } = useCart();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     address: '',
     phone: user?.phone || '',
@@ -13,6 +14,7 @@ const CheckoutPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
@@ -21,14 +23,27 @@ const CheckoutPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
+
+    // Проверяем авторизацию
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
 
     try {
-      // Здесь будет запрос к вашему API Django
+      console.log('token: ', token);
       const response = await fetch('http://localhost:8000/api/orders/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           user: user.id,
@@ -42,10 +57,16 @@ const CheckoutPage = () => {
         })
       });
 
-      if (response.ok) {
-        clearCart();
-        setOrderSuccess(true);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Ошибка при оформлении заказа');
       }
+
+      clearCart();
+      setOrderSuccess(true);
+    } catch (err) {
+      console.error('Ошибка при оформлении заказа:', err);
+      setError(err.message || 'Произошла ошибка при оформлении заказа');
     } finally {
       setIsSubmitting(false);
     }
@@ -66,6 +87,8 @@ const CheckoutPage = () => {
   return (
     <div className="container py-4">
       <h2 className="mb-4">Оформление заказа</h2>
+
+      {error && <div className="alert alert-danger">{error}</div>}
 
       <div className="row">
         <div className="col-md-7">

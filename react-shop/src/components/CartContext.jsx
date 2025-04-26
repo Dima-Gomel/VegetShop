@@ -9,16 +9,28 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+      try {
+        setCartItems(JSON.parse(savedCart));
+      } catch (error) {
+        console.error('Ошибка при загрузке корзины из localStorage', error);
+        setCartItems([]); // В случае ошибки очищаем корзину
+      }
     }
   }, []);
 
   // Сохранение корзины в localStorage
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    if (cartItems.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    }
   }, [cartItems]);
 
   const addToCart = (product) => {
+    if (!product || !product.id || !product.price) {
+      console.error('Invalid product data:', product);
+      return;
+    }
+
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id);
       return existing
@@ -42,17 +54,18 @@ export const CartProvider = ({ children }) => {
     }
     setCartItems(prev =>
       prev.map(item =>
-        item.id === productId ? {...item, quantity} : item
+        item.id === productId ? {...item, quantity: Math.max(quantity, 1)} : item
       )
     );
   };
 
   const clearCart = () => {
     setCartItems([]);
+    localStorage.removeItem('cart'); // Очищаем корзину из localStorage
   };
 
   const totalPrice = cartItems.reduce(
-    (sum, item) => sum + (item.price * item.quantity), 0
+    (sum, item) => sum + (Number(item.price) * item.quantity), 0
   );
 
   return (

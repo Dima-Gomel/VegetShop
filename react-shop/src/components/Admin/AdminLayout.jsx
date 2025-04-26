@@ -4,13 +4,13 @@ import {useEffect, useState} from 'react';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
-    const {user, loading, logout} = useAuth();
+    const {user, loading} = useAuth();
     const navigate = useNavigate();
     const [accessChecked, setAccessChecked] = useState(false);
 
-    // Проверка прав с защитой от повторных редиректов
+
     useEffect(() => {
-        console.log('Проверка доступа:', {user, loading});
+        // console.log('Проверка доступа:', {user, loading});
 
         if (!loading) {
             if (!user) {
@@ -26,22 +26,12 @@ const AdminLayout = () => {
         }
     }, [user, loading, navigate]);
 
-    // Добавим обработчик выхода с подтверждением
-    const handleLogout = async () => {
-        if (window.confirm('Вы уверены, что хотите выйти?')) {
-            await logout();
-            navigate('/login');
-        }
-    };
-    // useEffect(() => {
-    //     if (!loading) {
-    //         if (!user) {
-    //             navigate('/login', {replace: true});
-    //         } else if (!user.is_staff) {
-    //             navigate('/access-denied', {replace: true});
-    //         }
+    // const handleLogout = async () => {
+    //     if (window.confirm('Вы уверены, что хотите выйти?')) {
+    //         await logout();
+    //         navigate('/login');
     //     }
-    // }, [user, loading, navigate]);
+    // };
 
     if (loading || !accessChecked) {
         return (
@@ -76,7 +66,7 @@ const AdminLayout = () => {
                     <li>
                         <Link to="/admin/dashboard" className="menu-item">
                             <i className="bi bi-speedometer2"></i>
-                            <span>Дашборд</span>
+                            <span>Панель админа</span>
                         </Link>
                     </li>
                     <li>
@@ -100,16 +90,16 @@ const AdminLayout = () => {
 
                     <li className="menu-divider"></li>
 
-                    <li>
-                        <button
-                            onClick={handleLogout}
-                            className="menu-item logout-btn"
-                            title="Выйти из системы"
-                        >
-                            <i className="bi bi-box-arrow-right"></i>
-                            <span>Выйти</span>
-                        </button>
-                    </li>
+                    {/*<li>*/}
+                    {/*    <button*/}
+                    {/*        onClick={handleLogout}*/}
+                    {/*        className="menu-item logout-btn"*/}
+                    {/*        title="Выйти из системы"*/}
+                    {/*    >*/}
+                    {/*        <i className="bi bi-box-arrow-right"></i>*/}
+                    {/*        <span>Выйти</span>*/}
+                    {/*    </button>*/}
+                    {/*</li>*/}
                 </ul>
             </nav>
 

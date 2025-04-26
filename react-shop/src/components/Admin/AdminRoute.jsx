@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
-  console.log('AdminRoute check:', { user, loading });
+  // console.log('AdminRoute check:', { user, loading });
 
   if (loading) return <div>Загрузка...</div>;
   if (!user) return <Navigate to="/login" replace />;

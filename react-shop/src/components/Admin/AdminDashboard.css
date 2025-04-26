@@ -1,0 +1,33 @@
+.dashboard-container {
+  padding: 40px;
+  background-color: #f1fff1;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-container h1 {
+  font-size: 32px;
+  color: #2E7D32;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  text-decoration: none;
+  flex: 1;
+  min-width: 200px;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card.users { background-color: #66BB6A; }
+.card.orders { background-color: #FFA726; }
+.card.products { background-color: #26A69A; }

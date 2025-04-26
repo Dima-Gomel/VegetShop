@@ -11,10 +11,11 @@ const AdminOrdersPage = () => {
       try {
         const { data } = await axios.get('/api/admin/orders/', {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`
           }
         });
         setOrders(data);
+        // console.log("Прочитали Orders:", data);
       } finally {
         setLoading(false);
       }
@@ -25,7 +26,7 @@ const AdminOrdersPage = () => {
   const updateOrderStatus = async (orderId, status) => {
     await axios.patch(`/api/admin/orders/${orderId}/`,
       { status },
-      { headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` } }
+      { headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` } }
     );
     setOrders(orders.map(o => o.id === orderId ? {...o, status} : o));
   };
@@ -40,6 +41,7 @@ const AdminOrdersPage = () => {
           <tr>
             <th>ID</th>
             <th>Клиент</th>
+            <th>Email</th>
             <th>Дата</th>
             <th>Сумма</th>
             <th>Статус</th>
@@ -47,39 +49,43 @@ const AdminOrdersPage = () => {
           </tr>
         </thead>
         <tbody>
-          {orders.map(order => (
-            <tr key={order.id}>
-              <td>{order.id}</td>
-              <td>{order.user.email}</td>
-              <td>{new Date(order.created_at).toLocaleString()}</td>
-              <td>{order.total_amount} ₽</td>
-              <td>
-                <Badge bg={
-                  order.status === 'completed' ? 'success' :
-                  order.status === 'canceled' ? 'danger' : 'warning'
-                }>
-                  {order.status}
-                </Badge>
-              </td>
-              <td>
-                <Button
-                  size="sm"
-                  variant="outline-success"
-                  onClick={() => updateOrderStatus(order.id, 'completed')}
-                >
-                  Завершить
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline-danger"
-                  className="ms-2"
-                  onClick={() => updateOrderStatus(order.id, 'canceled')}
-                >
-                  Отменить
-                </Button>
-              </td>
-            </tr>
-          ))}
+          {orders.map(order => {
+            // console.log("Данные заказа:", order);
+            return (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{order.username}</td>
+                <td>{order.email}</td>
+                <td>{new Date(order.created_at).toLocaleString()}</td>
+                <td>{order.total_amount} ₽</td>
+                <td>
+                  <Badge bg={
+                    order.status === 'completed' ? 'success' :
+                    order.status === 'canceled' ? 'danger' : 'warning'
+                  }>
+                    {order.status}
+                  </Badge>
+                </td>
+                <td>
+                  <Button
+                    size="sm"
+                    variant="outline-success"
+                    onClick={() => updateOrderStatus(order.id, 'completed')}
+                  >
+                    Завершить
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline-danger"
+                    className="ms-2"
+                    onClick={() => updateOrderStatus(order.id, 'canceled')}
+                  >
+                    Отменить
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>

@@ -82,9 +82,7 @@ const CartPage = () => {
                     Оформить заказ
                   </Link>
                 ) : (
-                  <Link to="/login" className="btn btn-primary w-100">
-                    Войти для оформления
-                  </Link>
+                  <h4 className="btn btn-primary w-100">Войдите, чтобы оформить заказ</h4>
                 )}
               </div>
             </div>

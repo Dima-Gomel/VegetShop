@@ -28,19 +28,19 @@ code {
 }
 
 .logo {
-  height: 50px; /* Настройте под ваш логотип */
-  width: auto;
-  transition: transform 0.3s ease;
+    height: 50px; /* Настройте под ваш логотип */
+    width: auto;
+    transition: transform 0.3s ease;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 
 .logo-link {
-  display: inline-block; /* Чтобы ссылка правильно оборачивала лого */
-  text-decoration: none;
+    display: inline-block; /* Чтобы ссылка правильно оборачивала лого */
+    text-decoration: none;
 }
 
 .navigation {
@@ -90,135 +90,142 @@ code {
 
 /* Reset для Bootstrap */
 .auth-modal-overlay {
-  all: initial !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  background-color: rgba(0, 0, 0, 0.8) !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  z-index: 1050 !important; /* Выше чем у Bootstrap модалок */
-  font-family: Arial, sans-serif !important;
+    all: initial !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 1050 !important; /* Выше чем у Bootstrap модалок */
+    font-family: Arial, sans-serif !important;
 }
 
 .auth-modal-content {
-  all: initial !important;
-  background: white !important;
-  padding: 2rem !important;
-  border-radius: 8px !important;
-  width: 90% !important;
-  max-width: 500px !important;
-  position: relative !important;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3) !important;
-  animation: authFadeIn 0.3s ease-out !important;
+    all: initial !important;
+    background: white !important;
+    padding: 2rem !important;
+    border-radius: 8px !important;
+    width: 90% !important;
+    max-width: 500px !important;
+    position: relative !important;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3) !important;
+    animation: authFadeIn 0.3s ease-out !important;
 }
 
 /* Анимация */
 @keyframes authFadeIn {
-  from { opacity: 0 !important; transform: translateY(-20px) !important; }
-  to { opacity: 1 !important; transform: translateY(0) !important; }
+    from {
+        opacity: 0 !important;
+        transform: translateY(-20px) !important;
+    }
+    to {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
 }
 
 /* Остальные стили с !important */
 .auth-close-btn {
-  all: initial !important;
-  position: absolute !important;
-  top: 15px !important;
-  right: 15px !important;
-  font-size: 1.8rem !important;
-  background: none !important;
-  border: none !important;
-  cursor: pointer !important;
-  color: #666 !important;
-  line-height: 1 !important;
+    all: initial !important;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    font-size: 1.8rem !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    color: #666 !important;
+    line-height: 1 !important;
 }
 
 .auth-modal-title {
-  all: initial !important;
-  margin: 0 0 1.5rem 0 !important;
-  font-size: 1.5rem !important;
-  color: #333 !important;
-  text-align: center !important;
-  display: block !important;
-  font-weight: bold !important;
+    all: initial !important;
+    margin: 0 0 1.5rem 0 !important;
+    font-size: 1.5rem !important;
+    color: #333 !important;
+    text-align: center !important;
+    display: block !important;
+    font-weight: bold !important;
 }
 
 .auth-form-group {
-  all: initial !important;
-  margin-bottom: 1.2rem !important;
-  display: block !important;
+    all: initial !important;
+    margin-bottom: 1.2rem !important;
+    display: block !important;
 }
 
 .auth-form-group label {
-  all: initial !important;
-  display: block !important;
-  margin-bottom: 0.5rem !important;
-  font-weight: 500 !important;
-  color: #333 !important;
+    all: initial !important;
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 500 !important;
+    color: #333 !important;
 }
 
 .auth-form-input {
-  all: initial !important;
-  width: 100% !important;
-  padding: 0.8rem !important;
-  border: 1px solid #ddd !important;
-  border-radius: 4px !important;
-  font-size: 1rem !important;
-  box-sizing: border-box !important;
+    all: initial !important;
+    width: 100% !important;
+    padding: 0.8rem !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 1rem !important;
+    box-sizing: border-box !important;
 }
 
 .auth-submit-btn {
-  all: initial !important;
-  width: 100% !important;
-  padding: 0.8rem !important;
-  background-color: #28a745 !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 4px !important;
-  font-size: 1rem !important;
-  cursor: pointer !important;
-  margin-top: 1rem !important;
-  text-align: center !important;
+    all: initial !important;
+    width: 100% !important;
+    padding: 0.8rem !important;
+    background-color: #28a745 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 1rem !important;
+    cursor: pointer !important;
+    margin-top: 1rem !important;
+    text-align: center !important;
 }
 
 .auth-toggle-mode {
-  all: initial !important;
-  text-align: center !important;
-  margin-top: 1.5rem !important;
-  color: #666 !important;
-  display: block !important;
+    all: initial !important;
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+    color: #666 !important;
+    display: block !important;
 }
 
 .auth-mode-switch {
-  all: initial !important;
-  color: #007bff !important;
-  cursor: pointer !important;
-  text-decoration: underline !important;
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  font: inherit !important;
+    all: initial !important;
+    color: #007bff !important;
+    cursor: pointer !important;
+    text-decoration: underline !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    font: inherit !important;
 }
 
 /*стили для карточек */
 
 .product-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: none !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-card .card-img-top {
-  border-radius: 8px 8px 0 0 !important;
+    border-radius: 8px 8px 0 0 !important;
 }
+
 /*futter*/
 
 .footer {
@@ -346,116 +353,118 @@ code {
 
 /* Стили для модального окна */
 .auth-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .auth-modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 400px;
-  position: relative;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
 }
 
 .auth-close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .auth-modal-title {
-  margin-top: 0;
-  text-align: center;
+    margin-top: 0;
+    text-align: center;
 }
 
 .auth-form-group {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .auth-form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 .auth-form-input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .auth-submit-btn {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 1rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
 }
 
 .auth-submit-btn:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
 
 .auth-toggle-mode {
-  text-align: center;
-  margin-top: 1rem;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .auth-mode-switch {
-  background: none;
-  border: none;
-  color: #4CAF50;
-  text-decoration: underline;
-  cursor: pointer;
+    background: none;
+    border: none;
+    color: #4CAF50;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .auth-mode-switch:disabled {
-  color: #cccccc;
-  cursor: not-allowed;
+    color: #cccccc;
+    cursor: not-allowed;
 }
 
 .auth-error-message {
-  color: #f44336;
-  margin-bottom: 1rem;
-  text-align: center;
+    color: #f44336;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .auth-hint {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
 }
 
 .auth-spinner {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .user-controls {
@@ -471,93 +480,102 @@ code {
 }
 
 .cart-icon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  font-size: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.5rem;
 }
 
 .cart-icon__count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #ff5722;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff5722;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
 }
 
 /* Стили для корзины */
 .cart-item {
-  padding: 15px 0;
-  border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
 .cart-item img {
-  max-height: 80px;
-  object-fit: contain;
+    max-height: 80px;
+    object-fit: contain;
 }
 
 .checkout-card {
-  position: sticky;
-  top: 20px;
+    position: sticky;
+    top: 20px;
+    background: #fff; /* Белый фон */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .empty-cart {
-  text-align: center;
-  padding: 40px 0;
+    text-align: center;
+    padding: 40px 0;
 }
 
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
-  .cart-item {
-    margin-bottom: 15px;
-  }
+    .cart-item {
+        margin-bottom: 15px;
+    }
 
-  .cart-item > div {
-    margin-bottom: 10px;
-  }
+    .cart-item > div {
+        margin-bottom: 10px;
+    }
 }
 
 /* admin.css */
 .admin-layout {
-  display: flex;
-  min-height: 100vh;
+    display: flex;
+    min-height: 100vh;
 }
 
 .admin-sidebar {
-  width: 250px;
-  background: #343a40;
-  color: white;
-  padding: 20px;
+    width: 250px;
+    background: #343a40;
+    color: white;
+    padding: 20px;
 }
 
 .admin-sidebar ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .admin-sidebar a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 10px 0;
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
 }
 
 .admin-sidebar a:hover {
-  color: #f8f9fa;
+    color: #f8f9fa;
 }
 
 .admin-content {
-  flex: 1;
-  padding: 20px;
-  background: #f8f9fa;
+    flex: 1;
+    padding: 20px;
+    background: #f8f9fa;
 }
 
+.checkout-card span,
+.checkout-card strong {
+    color: #000 !important; /* Чёрный текст */
+    font-size: 16px !important;
+}

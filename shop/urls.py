@@ -18,8 +18,8 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from veget_shop.views import (
     AdminOrderViewSet,
     AdminProductViewSet,
-    AdminUserViewSet
-
+    AdminUserViewSet,
+    OrderViewSet,
 )
 
 schema_view = get_schema_view(
@@ -36,6 +36,7 @@ router = DefaultRouter()
 router.register(r'admin/orders', AdminOrderViewSet, basename='admin-orders')
 router.register(r'admin/products', AdminProductViewSet, basename='admin-products')
 router.register(r'admin/users', AdminUserViewSet, basename='admin-users')
+router.register(r'orders', OrderViewSet, basename='orders')
 
 urlpatterns = [
                   path('admin/', admin.site.urls),

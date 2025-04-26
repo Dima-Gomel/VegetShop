@@ -1,0 +1,70 @@
+.user-list-container {
+  padding: 30px;
+  background-color: #f9fdf8;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+  font-size: 28px;
+  color: #2E7D32;
+  margin-bottom: 25px;
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid #81C784;
+  border-radius: 10px;
+  padding: 15px 20px;
+  transition: box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.username {
+  font-weight: bold;
+  font-size: 18px;
+  color: #388E3C;
+}
+
+.email, .date {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.role {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.role.admin {
+  background-color: #43A047;
+}
+
+.role.user {
+  background-color: #9E9E9E;
+}
+
+.loading {
+  font-size: 18px;
+  text-align: center;
+  color: #2E7D32;
+  margin-top: 50px;
+}

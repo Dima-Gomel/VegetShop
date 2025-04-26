@@ -44,15 +44,15 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3 className="footer-title">Мы в соцсетях</h3>
                     <div className="social-icons">
-                        <a href="#"><FaFacebook/></a>
-                        <a href="#"><FaInstagram/></a>
-                        <a href="#"><FaTelegram/></a>
-                        <a href="#"><FaVk/></a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><FaFacebook/></a>
+                        <a href="https://www.instagram.com/" target="_blank"
+                           rel="noopener noreferrer"><FaInstagram/></a>
+                        <a href="https://t.me/Telegram" target="_blank" rel="noopener noreferrer"><FaTelegram/></a>
+                        <a href="https://vk.ru/" target="_blank" rel="noopener noreferrer"><FaVk/></a>
                     </div>
                 </div>
             </div>
 
-            {/* Копирайт */}
             <div className="footer-bottom">
                 <p>© {new Date().getFullYear()} Все права защищены.</p>
             </div>

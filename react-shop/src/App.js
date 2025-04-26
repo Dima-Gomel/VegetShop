@@ -19,7 +19,6 @@ import AdminOrdersPage from "./components/Admin/AdminOrdersPage";
 import AdminProductsPage from "./components/Admin/AdminProductsPage";
 import AdminRoute from "./components/Admin/AdminRoute";
 import {Navigate} from 'react-router-dom';
-import LoginPage from "./components/LoginPage";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import AdminUsersPage from "./components/Admin/AdminUsersPage";
 
@@ -34,7 +33,6 @@ function App() {
                         <Routes>
                             <Route path="*" element={<Navigate to="/" replace />} />
                             <Route path="/" element={<HomePage/>}/>
-                            <Route path="/login" element={<LoginPage/>}/>
                             <Route path="/products" element={<ProductsPage/>}/>
                             <Route path="/products/:id" element={<ProductDetails/>}/>
                             <Route path="/about" element={<AboutPage/>}/>
